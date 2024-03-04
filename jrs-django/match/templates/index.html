@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'style/style.css' %}'>
+
+</head>
+<body style="
+background: url('https://media.istockphoto.com/id/1279104620/photo/top-view-of-a-white-desktop-concept-job-search.jpg?s=612x612&w=0&k=20&c=Ow_kvA2wQ4rLlqX_oFHgpjLb1JMKyPQKLOPzbu6w6qw=');
+background-repeat: no-repeat;
+background-size: cover;
+">
+    <div class="form">
+    <div class="form-container">
+        <form method="POST">
+            {% csrf_token %}
+            <h2>Job Recomendaton System</h2>
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName">
+    
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName">
+    
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle">
+    
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" name="skills">
+    
+            <button id="submit-btn" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="{% static 'js/main.js' %}"> </script>
+</body>
+</html>
