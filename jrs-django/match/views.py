@@ -9,7 +9,7 @@ from .algos.use import use
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 
-def index(request):
+def inde(request):
     if request.user.is_authenticated:
         return render(request, 'index.html')
     else:
