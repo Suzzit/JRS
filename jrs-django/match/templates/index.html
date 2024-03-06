@@ -1,39 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'style/style.css' %}'>
+{% extends 'base.html' %}
 
-</head>
-<body style="
-background: url('https://media.istockphoto.com/id/1279104620/photo/top-view-of-a-white-desktop-concept-job-search.jpg?s=612x612&w=0&k=20&c=Ow_kvA2wQ4rLlqX_oFHgpjLb1JMKyPQKLOPzbu6w6qw=');
-background-repeat: no-repeat;
-background-size: cover;
-">
-    <div class="form">
-    <div class="form-container">
-        <form method="POST">
-            {% csrf_token %}
-            <h2>Job Recomendaton System</h2>
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="firstName">
-    
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="lastName">
-    
-            <label for="jobTitle">Job Title:</label>
-            <input type="text" id="jobTitle" name="jobTitle">
-    
-            <label for="skills">Skills:</label>
-            <input type="text" id="skills" name="skills">
-    
-            <button id="submit-btn" type="submit">Submit</button>
-        </form>
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h2 class="text-center">Job Recommendation System</h2>
+                </div>
+                <div class="card-body">
+                    <form id="job-form" method="POST" action="{% url 'results' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jobTitle">Job Title:</label>
+                            <input type="text" class="form-control" id="jobTitle" name="jobTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="skills">Skills:</label>
+                            <input type="text" class="form-control" id="skills" name="skills" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <script src="{% static 'js/main.js' %}"> </script>
-</body>
-</html>
+</div>
+{% endblock %}

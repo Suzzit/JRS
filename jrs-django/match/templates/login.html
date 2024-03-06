@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'style/style.css' %}'>
+{% extends 'base.html' %}
 
-</head>
-]    <body class="body">
-        <div class="login-container">
-            <h2>Login</h2>
-            
-            <form class="login-form"  method="POST" action='{% url 'login' %}'>
-                <!-- ... existing form elements ... -->
-                
-                {% csrf_token %}
-    
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Login</button>
-                </div>
-            </form>
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="form-signin login-form" method="post">
+        {% csrf_token %}
+        <h2 class="text-center mb-4">Login</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="username" id="inputEmail"  class="form-control mb-3" name="username" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword"  name="password" class="form-control mb-3" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
         </div>
-    </body>
-    
-</html>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+    <p class="text-center mt-3">Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+</div>
+{% endblock %}

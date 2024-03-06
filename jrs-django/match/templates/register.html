@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form class="form-signin border border-5-black p-5" method="post">
+        {% csrf_token %}
+        <h2 class="text-center mb-4">Register</h2>
+        {% for field in form %}
+        <div class="form-group w-100">
+            <div class="input-group">
+                <div class="input-group-prepend w-100">
+                    <span class="input-group-text">{{ field.label }}</span>
+                </div>
+                {{ field }}
+            </div>
+            {% if field.errors %}
+            <small class="form-text text-danger">{{ field.errors }}</small>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </form>
+</div>
+{% endblock %}
