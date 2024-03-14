@@ -9,7 +9,7 @@ from .algos.use import use
 from .forms import CustomUserCreationForm
 from django.contrib import messages
 
-def inde(request):
+def index(request):
     if request.user.is_authenticated:
         return render(request, 'index.html')
     else:
@@ -60,12 +60,38 @@ def logout_view(request):
 def results_view(request):
     jobTitle = request.POST['jobTitle']
     skills = request.POST['skills'].split(',')
+    jobType = request.POST['job-type']
 
-    resultData = use(jobTitle, skills)
+    resultData = use(jobTitle, jobType, skills)
     data = []
     for key in resultData['jobtitle'].keys():
-        data.append([resultData['jobtitle'][key], resultData['joblocation_address'][key], resultData['skills'][key], resultData['']])
+        data.append([resultData['joblocation_address'][key], resultData['jobtitle'][key], resultData['company'][key],
+        resultData['skills'][key], resultData['employmenttype_jobstatus'][key]])
     context = {
         'data' : data
     }
     return render(request, 'results.djhtml', context)
+
+@csrf_exempt
+def tests_view(request):
+    userData = [['Javascript Dev', 'full time', ['html', 'css', 'javascript', 'python', 'git']],
+    ['Python Developer', 'full time', ['javascript', 'python', 'django', 'flask']],
+    ['AI Developer', 'full time', ['python', 'numpy', 'flask']], ['Machine learning Developer', 'full time', ['html', 'css', 'js']]]
+
+    resultRefinedData = {}
+    for uData in userData:
+        uData = (uData[0], uData[1], tuple(uData[2]))
+        testResultData = use(uData[0], uData[1], uData[2])
+
+
+        data = []
+        for key in testResultData['jobtitle'].keys():
+            data.append([testResultData['joblocation_address'][key], testResultData['jobtitle'][key], testResultData['company'][key],
+            testResultData['skills'][key], testResultData['employmenttype_jobstatus'][key]])
+
+        resultRefinedData[tuple(uData)] = tuple(data)
+
+    context = {
+        'data' : resultRefinedData
+    }
+    return render(request, 'tests.djhtml', context)

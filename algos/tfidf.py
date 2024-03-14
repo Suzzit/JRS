@@ -22,5 +22,5 @@ tdif_matrix.shape
 
 joblib.dump(tdif, 'model.pkl')
 
-# with open('store.bin', 'wb') as f:
-#     pickle.dump(tdif_matrix, f)
+with open('store.bin', 'wb') as f:
+    pickle.dump(tdif_matrix, f)

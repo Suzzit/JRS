@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .body {
     font-family: Arial, sans-serif;
     background: url('https://media.istockphoto.com/id/1279104620/photo/top-view-of-a-white-desktop-concept-job-search.jpg?s=612x612&w=0&k=20&c=Ow_kvA2wQ4rLlqX_oFHgpjLb1JMKyPQKLOPzbu6w6qw=');
@@ -8,6 +14,7 @@
     height: 700px;
     background-repeat: no-repeat;
     background-size: cover;
+    background: black;
 }
 
 .login-container {
@@ -70,8 +77,8 @@
 .form {
     font-family: Arial, sans-serif;
     margin: 50px;
-    
-    
+
+
 }
 
 .form-container {
@@ -110,4 +117,9 @@ button {
 
 button:hover{
     background-color: #9b9696;
+}
+
+/* for form in index page */
+#job-type {
+    background: red;
 }

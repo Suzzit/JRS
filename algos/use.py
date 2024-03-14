@@ -15,8 +15,8 @@ df1['jobdescription'].head()
 tfidf_vectorizer_loaded = joblib.load('/home/devsuzzit/Documents/jrs/back/algos/model.pkl')
 
 
-def use(title, skills=[]):
-    newData = title + ' ' + ' '.join(skills)
+def use(title, jobType, skills=[]):
+    newData = title + ' ' +  jobType + ' ' + ' '.join(skills)
     input_matrix = tfidf_vectorizer_loaded.transform([newData])
 
     loadedMatrix = joblib.load('/home/devsuzzit/Documents/jrs/back/algos/store.bin')

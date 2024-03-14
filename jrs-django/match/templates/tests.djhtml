@@ -1,0 +1,28 @@
+<h1>Test Page</h1>
+
+<table>
+    <thead>
+        <th style="font-size: 1.3rem;">Test Cases</th>
+        <th style="font-size: 1.3rem;">Results</th>
+    </thead>
+
+    <tbody>
+        {% for key, value in data.items %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>
+                    <ol>
+                        {% for subItems in value %}
+                            <li>
+                                {{subItems}}
+                            </li>
+                        {% endfor %}
+
+                    </ol>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
